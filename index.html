@@ -2,27 +2,24 @@
 <html lang='en'>
 <head>
     <meta charset="UTF-8">
-    <link rel='stylesheet' href="style.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
-
 <body>
-<div class="contianer">
-    <div class="row">
-        <div class="col-md-6">
-                
-            <img class="mx-auto" src="./rps.png" alt="rps pic">
-        </div>
-        <div class="col-md-6">
-            <h2>Please press R, P or S to start the game!</h2>
-            <div class="game">
-                
-            </div>
+
+<div class="contianer bg-info">
+    <div class="row justify-content-md-center">
+        <div class="col-12 text-center p-4"><h2>Please press R, P or S to start the game!</h2></div>
+        <img class="mx-auto d-block p-4" src="./rps.png" alt="rps pic">
+        <button type="button" class="btn-primary"></button>
+        <br>
+        <!-- set an id for javascript to target -->
+        <div class="col-12 text-center" id="game"></div>
+    </div>
             
-        </div>
     </div>
 
 </div>
@@ -63,14 +60,14 @@ console.log("computer Pick: " +userGuess);
             ties++;
         }
 
-        var html = "<h3>" + "You picked: "+ userGuess + "</h3>" +
+        var html =  "<h3>" + "You picked: "+ userGuess + "</h3>" +
                     "<h3>" + "Computer picked: "+ computerPick + "</h3>" +
                     "<h3>" + "Wins: " + wins + 
                     "<h3>" + "Loses: " + loses +
-                    "<h3>" + "Ties" + ties + "</h3>" +
-                    "<button>" + "Restart" + "</button>"
+                    "<h3>" + "Ties: " + ties + "</h3>" +
+                    "<button type=button class=btn-primary>" + "Restart" + "</button>" 
 
-        document.querySelector(".game").innerHTML = html;
+        document.querySelector("#game").innerHTML = html;
 
     } else {
         alert("Please press R, P or S to start the game!");
