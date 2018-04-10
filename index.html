@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href="style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+<div class="contianer">
+    <div class="row">
+        <div class="col-md-6">
+                
+            <img class="mx-auto" src="./rps.png" alt="rps pic">
+        </div>
+        <div class="col-md-6">
+            <h2>Please press R, P or S to start the game!</h2>
+            <div class="game">
+                
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+var computer = ["r", "p", "s"];
+
+var wins = 0;
+var loses = 0;
+var ties = 0;
+
+//Once the user presses the letters
+document.onkeyup = function(event) {
+//Set a verible to hold user's input key value
+var userGuess = event.key;
+
+//Randomly pick a letter from computer index
+var computerPick = computer[Math.floor(Math.random() * computer.length)];
+
+console.log("computer Pick: " +computerPick);
+console.log("computer Pick: " +userGuess);
+
+    if ((userGuess === 'r') || (userGuess === 'p') || (userGuess === 's')) {
+        if ((userGuess === 'r') && (computerPick === 's')) {
+            wins++;
+        } else if ((userGuess === 'r') && (computerPick === 'p')) {
+            loses++;
+        } else if ((userGuess === 's') && (computerPick === 'r')) {
+            loses++;
+        } else if ((userGuess === 's') && (computerPick === 'p')) {
+            wins++;
+        } else if ((userGuess === 'p') && (computerPick === 'r')) {
+            wins++;
+        } else if ((userGuess === 'p') && (computerPick === 's')) {
+            loses++;
+        } else if ((userGuess === computerPick)) {
+            ties++;
+        }
+
+        var html = "<h3>" + "You picked: "+ userGuess + "</h3>" +
+                    "<h3>" + "Computer picked: "+ computerPick + "</h3>" +
+                    "<h3>" + "Wins: " + wins + 
+                    "<h3>" + "Loses: " + loses +
+                    "<h3>" + "Ties" + ties + "</h3>" +
+                    "<button>" + "Restart" + "</button>"
+
+        document.querySelector(".game").innerHTML = html;
+
+    } else {
+        alert("Please press R, P or S to start the game!");
+    }
+
+};
+
+</script>
+
+</body>
+</html>
