@@ -11,16 +11,20 @@
 <body>
 
 <div class="contianer bg-info">
-    <div class="row justify-content-md-center">
-        <div class="col-12 text-center p-4"><h2>Please press R, P or S to start the game!</h2></div>
-        <img class="mx-auto d-block p-4" src="./rps.png" alt="rps pic">
-        <button type="button" class="btn-primary"></button>
-        <br>
-        <!-- set an id for javascript to target -->
-        <div class="col-12 text-center" id="game"></div>
+
+    <div class="row">
+    <div class="col-12 text-center p-4"><h2>Please press R, P or S to start the game!</h2></div>
     </div>
+    <div class="row">
+    <img class="mx-auto d-block p-4" src="./rps.png" alt="rps pic">
+    </div>
+      <div class="row justify-content-md-center">
+    <button type="button" id="restart" class="col-3 btn btn-primary">Restart</button>
+     </div>
+    <br>
+    <!-- set an id for javascript to target -->
+    <div class="col-12 text-center p-3" id="game"></div>
             
-    </div>
 
 </div>
 
@@ -39,9 +43,6 @@ var userGuess = event.key;
 
 //Randomly pick a letter from computer index
 var computerPick = computer[Math.floor(Math.random() * computer.length)];
-
-console.log("computer Pick: " +computerPick);
-console.log("computer Pick: " +userGuess);
 
     if ((userGuess === 'r') || (userGuess === 'p') || (userGuess === 's')) {
         if ((userGuess === 'r') && (computerPick === 's')) {
@@ -64,8 +65,8 @@ console.log("computer Pick: " +userGuess);
                     "<h3>" + "Computer picked: "+ computerPick + "</h3>" +
                     "<h3>" + "Wins: " + wins + 
                     "<h3>" + "Loses: " + loses +
-                    "<h3>" + "Ties: " + ties + "</h3>" +
-                    "<button type=button class=btn-primary>" + "Restart" + "</button>" 
+                    "<h3>" + "Ties: " + ties + "</h3>"
+  
 
         document.querySelector("#game").innerHTML = html;
 
@@ -74,6 +75,12 @@ console.log("computer Pick: " +userGuess);
     }
 
 };
+
+document.getElementById('restart').addEventListener("click", restart());
+
+function restart() {
+    document.getElementById("restart").innerHTML(); 
+}
 
 </script>
 
